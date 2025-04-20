@@ -9,18 +9,22 @@ db = SQLAlchemy(app)
 #Defining the database model
 class User(db.Model):
     id = db.Column(db.Integer, primary_key= True)
-    name = db.Column(db.String(100), nullable = False)
-    email = db.Column(db.String(200), nullable = False)
-    address = db.Column(db.String(400), nullable = False)
+    firstName = db.Column(db.String(100), nullable = False)
+    lastName = db.Column(db.String(100), nullable = False)
+    userName = db.Column(db.String(200), nullable = False)
+    city = db.Column(db.String(200), nullable = False)
+    zip = db.Column(db.String(100), nullable = False)
 
 
 @app.route("/", methods = ['GET','POST'])
 def add_user():
     if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        address = request.form['address']
-        new_user = User(name=name,email=email,address = address)
+        firstName = request.form['firstName']
+        lastName = request.form['lastName']
+        userName = request.form['Username']
+        city = request.form['city']
+        zip = request.form['zip']
+        new_user = User(firstName = firstName,lastName = lastName,userName = userName, city= city, zip = zip)
         db.session.add(new_user)
         db.session.commit()
         return redirect('/')
