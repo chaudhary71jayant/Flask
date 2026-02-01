@@ -30,6 +30,13 @@ def add_user():
         return redirect('/')
     return render_template('index.html')
 
+@app.route("/delete/<int:id>", methods =['GET','POST'])
+def delete_user(id):
+    user_to_delete = User.query.get_or_404(id)
+    db.session.delete(user_to_delete)
+    db.session.commit()
+    return redirect('/')
+
 if __name__  == '__main__':
     with app.app_context():
         db.create_all()

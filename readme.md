@@ -1,7 +1,7 @@
-This is the beginingo of learning flask by doing some small scale pages their rendering and storing the data to the database.
+# This is the beginingo of learning flask by doing some small scale pages their rendering and storing the data to the database.
 
 
-=> Form Storing
+## Form Storing
 
  Directory name Form storing , where i learned to create a flask app and all the commands needed to intialize the flask project.
 
