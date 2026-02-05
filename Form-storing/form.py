@@ -24,11 +24,20 @@ def add_user():
         userName = request.form['Username']
         city = request.form['city']
         zip = request.form['zip']
+
         new_user = User(firstName = firstName,lastName = lastName,userName = userName, city= city, zip = zip)
         db.session.add(new_user)
         db.session.commit()
         return redirect('/')
+    
     return render_template('index.html')
+
+@app.route("/users")
+def show_users():
+    users = User.query.all()
+    return render_template("users.html", users=users)
+
+
 
 @app.route("/delete/<int:id>", methods =['GET','POST'])
 def delete_user(id):
